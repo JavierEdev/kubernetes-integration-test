@@ -1,5 +1,5 @@
 import Fastify from 'fastify';
-
+import 'dotenv/config';
 import {registerSwagger} from './plugins/swagger.js';
 import type {HelloRequest} from './models/Request/Hello.js';
 import type {HelloResponse} from './models/Response/Hello.js';
@@ -58,7 +58,9 @@ fastify.post<{ Body: HelloRequest; Reply: HelloResponse }>('/hello', {
     });
 });
 
-fastify.listen({port: 3000}, function (err, address) {
+const port = Number(process.env.PORT) || 3000;
+
+fastify.listen({port, host: '0.0.0.0'}, function (err, address) {
     if (err) {
         fastify.log.error(err)
         process.exit(1)
