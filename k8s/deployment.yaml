@@ -15,10 +15,10 @@ spec:
     spec:
       containers:
         - name: fastify-api
-          image: kubernetes-integration-test:latest  # <--- REEMPLAZA ESTO por el nombre exacto de tu imagen que cargaste en Kind
-          imagePullPolicy: IfNotPresent  # <--- Esto obliga a Kind a usar la imagen local
+          image: kubernetes-integration-test:latest
+          imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 3000          # <--- El puerto interno donde escucha tu Fastify
+            - containerPort: 3000
           resources:
             limits:
               memory: "128Mi"
